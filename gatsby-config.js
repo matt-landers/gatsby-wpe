@@ -1,3 +1,9 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+console.log(process.env.NODE_ENV)
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby on WP Engine`,
@@ -32,7 +38,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // your WordPress source
-        baseUrl: `headlesswpe.wpengine.com`,
+        baseUrl: process.env.WP_URL,
         protocol: `https`,
         // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
